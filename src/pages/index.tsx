@@ -15,9 +15,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Thanks for supporting All to Scale</h1>
 
-        <p className={styles.description}>
-          We can't thank you enough. Check out our posts!
-        </p>
+        <p className={styles.description}>Check out our posts!</p>
 
         <div className={styles.timeline}>
           <TwitterTimelineEmbed sourceType="profile" screenName="alltoscale" />

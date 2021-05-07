@@ -1,4 +1,7 @@
 import Head from 'next/head';
+// @ts-ignore
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -16,12 +19,21 @@ export default function Home() {
           We can't thank you enough. Check out our posts!
         </p>
 
-        <p className={styles.description}>This is not an official starter!</p>
+        <div className={styles.timeline}>
+          <TwitterTimelineEmbed sourceType="profile" screenName="alltoscale" />
+        </div>
       </main>
 
       <footer className={styles.footer}>
-        Putting unthinkable size, numbers, and complexity into a form you can
-        wrap your head around
+        <p>
+          Putting unthinkable size, numbers, and complexity into a form you can
+          wrap your head around
+        </p>
+        <p>
+          <a href="https://www.planetary.org/worlds/pale-blue-dot">
+            Pale blue dot.
+          </a>
+        </p>
       </footer>
     </div>
   );

@@ -21,8 +21,10 @@ export default function Landing() {
         {/** Header */}
         <div className="w-full flex justify-center align-middle">
           <div className="flex flex-col items-center">
-            <h1 className="text-white mt-16 text-5xl leading-tight monoton-font">
-              <Link href="/"> Grooving Against Leukemia!</Link>
+            <h1 className="text-white mt-8 md:mt-16 text-5xl leading-tight monoton-font text-center">
+              <Link href="/">
+                <a> Grooving Against Leukemia!</a>
+              </Link>
             </h1>
             <h2 className="text-white">NYC Marathon 2021 to benefit LLS</h2>
             <h2 className="text-white">AJ Kuhn and Jack O'Brien</h2>
@@ -54,16 +56,6 @@ export default function Landing() {
             title="The Party"
             text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it"
           />
-        </div>
-
-        {/** Footer */}
-        <div className="w-full flex flex-col justify-center items-center gap-2 mt-16 mb-4 pb-2">
-          <h3 className="text-white text-xs">GAL 2021</h3>
-          <p className="text-white text-xs">
-            <Link href="/listening">
-              <a>Now Playing</a>
-            </Link>
-          </p>
         </div>
       </div>
     </BaseLayout>

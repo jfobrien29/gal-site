@@ -1,4 +1,10 @@
+import {
+  GAL_DONATE_PAGE_2018,
+  GAL_DONATE_PAGE_2019,
+  LLS_URL,
+} from '@/utils/constants';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const BaseLayout: React.FC<any> = ({
   title = 'Grooving Against Leukemia',
@@ -45,12 +51,33 @@ const BaseLayout: React.FC<any> = ({
       <main>{children}</main>
 
       <footer>
-        <p>Reach out!</p>
-        <p>
-          <a href="https://www.planetary.org/worlds/pale-blue-dot">
-            Pale blue dot.
-          </a>
-        </p>
+        <div className="w-full flex flex-col justify-center items-center gap-2 mt-16 mb-4 pb-2">
+          <h3 className="text-white text-sm font-semibold mb-1">GAL 2021</h3>
+          <div className="flex gap-2">
+            <p className="text-white text-xs">
+              <Link href={GAL_DONATE_PAGE_2019}>
+                <a>GAL 2019</a>
+              </Link>
+            </p>
+            <p className="text-white text-xs">|</p>
+            <p className="text-white text-xs">
+              <Link href={GAL_DONATE_PAGE_2018}>
+                <a>GAL 2018</a>
+              </Link>
+            </p>
+            <p className="text-white text-xs">|</p>
+            <p className="text-white text-xs">
+              <Link href={LLS_URL}>
+                <a>Leukemia Lymphoma Society</a>
+              </Link>
+            </p>
+          </div>
+          {/* <p className="text-white text-xs">
+            <Link href="/listening">
+              <a>Now Playing</a>
+            </Link>
+          </p> */}
+        </div>
       </footer>
     </div>
   );

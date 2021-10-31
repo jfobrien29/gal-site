@@ -1,6 +1,6 @@
 {
-  "name": "scale-frontend",
-  "description": "All to Scale frontent",
+  "name": "gal-marathon-site",
+  "description": "site for the GAL marathon 2021",
   "version": "1.0.0",
   "private": true,
   "author": "Jack O'Brien",
@@ -24,10 +24,14 @@
     ]
   },
   "dependencies": {
+    "autoprefixer": "^10.3.7",
     "next": "10.2.0",
+    "postcss": "^8.3.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-twitter-embed": "3.0.3"
+    "react-icons": "^4.3.1",
+    "react-twitter-embed": "3.0.3",
+    "tailwindcss": "^2.2.17"
   },
   "devDependencies": {
     "@types/node": "14.14.43",

@@ -8,11 +8,39 @@ import {
   MARATHON_URL,
 } from '@/utils/constants';
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 
-const Card: React.FC<any> = ({ title, text }) => {
+const GroovinLogo = () => {
   return (
-    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:bg-white hover:shadow-lg transform duration-500 ease-in-out hover:-translate-y-1 hover:text-purple-600">
+    <div className="">
+      <Image
+        src="/gal-logo.png"
+        width="100"
+        height="100"
+        placeholder="blue"
+        priority
+      />
+    </div>
+  );
+};
+
+interface PersonData {
+  name: string;
+  startingTime: string;
+  bib: string;
+  tshirt: string;
+  shorts: string;
+  hat: string;
+  playlist: string;
+}
+
+const Card: React.FC<{ title: string; data?: PersonData }> = ({
+  title,
+  data,
+}) => {
+  return (
+    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:bg-white hover:shadow-lg transform duration-500 ease-in-out hover:-translate-y-1 hover:text-purple-600 boxShadow-offset-green">
       <h2 className="font-semibold text-lg ">{title}</h2>
       <div className="grid grid-cols-2 text-sm">
         <p className="">Starting Time</p>
@@ -62,50 +90,62 @@ export default function Landing() {
         </div>
 
         {/** Donate Button */}
-        <div className="w-full flex flex-col items-center gap-4 mt-10 text-lg">
-          <div>
-            <Link href={GAL_DONATE_PAGE} passHref>
-              <a
-                className="font-bold px-5 py-3 bg-green-400 rounded-full hover:shadow-2xl"
-                target="_blank"
-              >
-                Donate to the Team Now!
-              </a>
-            </Link>
-          </div>
-          <div className="text-center">
-            <h3>or donate to one of the guys</h3>
-            <div className="flex gap-5 justify-center">
-              <Link href={AJ_DONATE_PAGE} passHref>
+        <div className="w-full flex justify-center gap-20 mt-10">
+          <GroovinLogo />
+          <div className="flex flex-col items-center gap-4 text-lg">
+            <div>
+              <Link href={GAL_DONATE_PAGE} passHref>
                 <a
-                  className="font-bold px-5 py-3 bg-green-400 rounded-full hover:shadow-2xl w-24 text-center"
+                  className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl"
                   target="_blank"
                 >
-                  AJ
-                </a>
-              </Link>
-              <Link href={JACK_DONATE_PAGE} passHref>
-                <a
-                  className="font-bold px-5 py-3 bg-green-400 rounded-full hover:shadow-2xl w-24 text-center"
-                  target="_blank"
-                >
-                  Jack
+                  Donate to the Team Now!
                 </a>
               </Link>
             </div>
+            <div className="text-center">
+              <h3>or donate to one of the guys</h3>
+              <div className="flex gap-5 justify-center">
+                <Link href={AJ_DONATE_PAGE} passHref>
+                  <a
+                    className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl w-24 text-center"
+                    target="_blank"
+                  >
+                    AJ
+                  </a>
+                </Link>
+                <Link href={JACK_DONATE_PAGE} passHref>
+                  <a
+                    className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl w-24 text-center"
+                    target="_blank"
+                  >
+                    Jack
+                  </a>
+                </Link>
+              </div>
+            </div>
           </div>
+          <GroovinLogo />
         </div>
 
         {/** Details on Party */}
         <div className="w-full flex justify-center gap-4 mt-10 text-lg">
-          <div className="group w-3/4 md:w-3/4 h-64 p-3 border-green-500 border-2 rounded-sm hover:bg-white hover:shadow-lg transform duration-500 ease-in-out hover:-translate-y-1">
-            <h2 className="font-semibold text-lg group-hover:text-purple-600">
-              Meet us After!
-            </h2>
-            <p className="text-sm group-hover:text-purple-600">
+          <div className="group w-3/4 md:w-96 h-64 p-3 border-green-500 border-2 rounded-sm">
+            <h2 className="text-xl font-semibold">Post Race Celly</h2>
+            <p className="text-md mt-1">
               Party with us afterwards from 3-7 at the Crompton Ale House on
               26th street between 6th and 7th avenue.
             </p>
+            <div className="mt-5">
+              <Link href={AJ_DONATE_PAGE} passHref>
+                <a
+                  className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl w-24 text-center"
+                  target="_blank"
+                >
+                  Directions to Crompton Ale House
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -123,14 +163,8 @@ export default function Landing() {
 
         {/** Cards */}
         <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 mt-2 md:mt-3">
-          <Card
-            title="AJ Kuhn"
-            text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it"
-          />
-          <Card
-            title="Jack O'Brien"
-            text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it"
-          />
+          <Card title="AJ Kuhn" />
+          <Card title="Jack O'Brien" />
         </div>
       </div>
     </BaseLayout>

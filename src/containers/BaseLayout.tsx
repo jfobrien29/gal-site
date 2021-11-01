@@ -61,7 +61,7 @@ const BaseLayout: React.FC<any> = ({
           <div className="flex gap-2">
             <p className="text-xs">
               <Link href={LLS_URL}>
-                <a target="_blank">Leukemia Lymphoma Society</a>
+                <a target="_blank">Leukemia & Lymphoma Society</a>
               </Link>
             </p>
             <p className="text-xs">|</p>

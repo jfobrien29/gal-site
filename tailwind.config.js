@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         'orange': '#F80',
       },
+      boxShadow: {
+        'offset-green': '2px 2px green'
+      }
     },
   },
   variants: {

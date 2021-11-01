@@ -1,6 +1,7 @@
 import BaseLayout from '@/containers/BaseLayout';
 import {
   AJ_DONATE_PAGE,
+  CROMPTON_DIRECTOPNS,
   GAL_DONATE_PAGE,
   JACK_DONATE_PAGE,
   LLS_URL,
@@ -14,13 +15,7 @@ import React from 'react';
 const GroovinLogo = () => {
   return (
     <div className="">
-      <Image
-        src="/gal-logo.png"
-        width="100"
-        height="100"
-        placeholder="blue"
-        priority
-      />
+      <Image src="/gal-logo.png" width="100" height="100" priority />
     </div>
   );
 };
@@ -72,16 +67,16 @@ export default function Landing() {
                 <a> Grooving Against Leukemia!</a>
               </Link>
             </h1>
-            <div className="flex gap-2 text-lg">
-              <h2 className="">
-                <Link href={MARATHON_URL}>
-                  <a target="_blank">NYC Marathon 2021</a>
-                </Link>
-              </h2>
-              <h2 className="">|</h2>
+            <div className="flex gap-2 text-lg flex-col md:flex-row items-center font-semibold">
               <h2 className="">
                 <Link href={LLS_URL}>
                   <a target="_blank">Leukemia & Lymphoma Society</a>
+                </Link>
+              </h2>
+              <h2 className="hidden md:inline">|</h2>
+              <h2 className="">
+                <Link href={MARATHON_URL}>
+                  <a target="_blank">NYC Marathon 2021</a>
                 </Link>
               </h2>
             </div>
@@ -90,7 +85,7 @@ export default function Landing() {
         </div>
 
         {/** Donate Button */}
-        <div className="w-full flex justify-center gap-20 mt-10">
+        <div className="w-full flex justify-center gap-28 mt-10">
           <GroovinLogo />
           <div className="flex flex-col items-center gap-4 text-lg">
             <div>
@@ -105,7 +100,7 @@ export default function Landing() {
             </div>
             <div className="text-center">
               <h3>or donate to one of the guys</h3>
-              <div className="flex gap-5 justify-center">
+              <div className="flex gap-5 justify-center mt-1">
                 <Link href={AJ_DONATE_PAGE} passHref>
                   <a
                     className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl w-24 text-center"
@@ -130,27 +125,35 @@ export default function Landing() {
 
         {/** Details on Party */}
         <div className="w-full flex justify-center gap-4 mt-10 text-lg">
-          <div className="group w-3/4 md:w-96 h-64 p-3 border-green-500 border-2 rounded-sm">
-            <h2 className="text-xl font-semibold">Post Race Celly</h2>
+          <div className="group w-3/4 md:w-96 p-3 border-green-500 border-2 rounded-sm">
+            <h2 className="text-xl font-semibold">Post Race</h2>
             <p className="text-md mt-1">
-              Party with us afterwards from 3-7 at the Crompton Ale House on
+              Party with us after the run from 3-7 at the Crompton Ale House on
               26th street between 6th and 7th avenue.
             </p>
-            <div className="mt-5">
-              <Link href={AJ_DONATE_PAGE} passHref>
+            <div className="mt-2 flex justify-center">
+              <iframe
+                className="border-0 w-11/12 h-52"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.7369554553047!2d-73.99549058540212!3d40.74581324348466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a569a16963%3A0xf663cbfcb3905f12!2sCrompton%20Ale%20House!5e0!3m2!1sen!2sus!4v1635741398443!5m2!1sen!2sus"
+                // width="600"
+                // height="450"
+                allowFullScreen={false}
+                loading="lazy"
+              ></iframe>
+              {/* <Link href={CROMPTON_DIRECTOPNS} passHref>
                 <a
                   className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl w-24 text-center"
                   target="_blank"
                 >
                   Directions to Crompton Ale House
                 </a>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
 
         {/** How to track */}
-        <div className="w-full flex flex-col items-center gap-4 mt-10 text-lg">
+        <div className="w-full flex flex-col items-center gap-2 mt-10 text-lg">
           <div>Track us during the race on the NYC marathon app</div>
           <div className="flex gap-4">
             <Link href={MARATHON_IPHONE_APP_URL} passHref>

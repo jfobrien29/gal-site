@@ -7,8 +7,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 const BaseLayout: React.FC<any> = ({
-  title = 'Grooving Against Leukemia',
-  description = 'Post Marathon Party 3-7 at Crompton Ale House',
+  title = '🕺 Grooving Against Leukemia 🕺',
+  description = 'Party After the NYC Marathon from 3-7 at Crompton Ale House',
   children,
 }) => {
   return (

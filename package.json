@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "1.1.10",
     "autoprefixer": "^10.3.7",
     "next": "10.2.0",
     "postcss": "^8.3.10",

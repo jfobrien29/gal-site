@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const BaseLayout: React.FC<any> = ({
   title = 'Grooving Against Leukemia',
-  description = 'Post Marathon Party at Crompton Ale House',
+  description = 'Post Marathon Party 3-7 at Crompton Ale House',
   children,
 }) => {
   return (
@@ -16,6 +16,11 @@ const BaseLayout: React.FC<any> = ({
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta
+          property="og:url"
+          content={`https://gal.vercel.app/gal-logo.png`}
+          key="ogurl"
+        />
 
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -43,32 +48,32 @@ const BaseLayout: React.FC<any> = ({
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Dosis&family=Monoton&display=swap"
           rel="stylesheet"
         />
       </Head>
 
-      <main>{children}</main>
+      <main className="dosis-font text-white">{children}</main>
 
-      <footer>
+      <footer className="dosis-font text-white">
         <div className="w-full flex flex-col justify-center items-center gap-2 mt-16 mb-4 pb-2">
-          <h3 className="text-white text-sm font-semibold mb-1">GAL 2021</h3>
+          <h3 className="text-sm font-semibold mb-1">GAL 2021</h3>
           <div className="flex gap-2">
-            <p className="text-white text-xs">
-              <Link href={GAL_DONATE_PAGE_2019}>
-                <a>GAL 2019</a>
-              </Link>
-            </p>
-            <p className="text-white text-xs">|</p>
-            <p className="text-white text-xs">
-              <Link href={GAL_DONATE_PAGE_2018}>
-                <a>GAL 2018</a>
-              </Link>
-            </p>
-            <p className="text-white text-xs">|</p>
-            <p className="text-white text-xs">
+            <p className="text-xs">
               <Link href={LLS_URL}>
-                <a>Leukemia Lymphoma Society</a>
+                <a target="_blank">Leukemia Lymphoma Society</a>
+              </Link>
+            </p>
+            <p className="text-xs">|</p>
+            <p className="text-xs">
+              <Link href={GAL_DONATE_PAGE_2019}>
+                <a target="_blank">GAL 2019</a>
+              </Link>
+            </p>
+            <p className="text-xs">|</p>
+            <p className="text-xs">
+              <Link href={GAL_DONATE_PAGE_2018}>
+                <a target="_blank">GAL 2018</a>
               </Link>
             </p>
           </div>

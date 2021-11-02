@@ -12,6 +12,8 @@ import Image from 'next/image';
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
+const TEAM = `AJ Kuhn and Jack O'Brien`;
+
 const GroovinLogo = ({ dimension = `100` }) => (
   <div>
     <Image src="/gal-logo.png" width={dimension} height={dimension} priority />
@@ -89,7 +91,7 @@ export default function Landing() {
                 </Link>
               </h2>
             </div>
-            <h2 className="text-lg mt-2">{`AJ Kuhn and Jack O'Brien`}</h2>
+            <h2 className="text-lg mt-2">{TEAM}</h2>
           </div>
         </div>
 

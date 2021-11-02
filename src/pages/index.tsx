@@ -69,10 +69,18 @@ const Card: React.FC<{ data: PersonData }> = ({ data }) => (
 export default function Landing() {
   return (
     <BaseLayout>
+      <div className="w-full flex flex-row justify-center mt-1">
+        <ReactAudioPlayer
+          src="bee_gees_stayin_alive.mp3"
+          autoPlay
+          controls
+          loop
+        />
+      </div>
       <div className="w-full min-h-screen bg-gradient-to-b from-purple-600 to-purple-600">
         {/** Header */}
         <div className="w-full flex justify-center align-middle">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full">
             <h1 className="mt-8 md:mt-16 text-5xl leading-tight monoton-font text-center">
               <Link href="/">
                 <a> Grooving Against Leukemia!</a>
@@ -175,15 +183,6 @@ export default function Landing() {
           {PERSON_DATA.map((person: PersonData) => (
             <Card key={`person-${person.name}`} data={person} />
           ))}
-        </div>
-
-        <div className="w-full flex flex-row justify-center mt-10">
-          <ReactAudioPlayer
-            src="bee_gees_stayin_alive.mp3"
-            autoPlay
-            controls
-            loop
-          />
         </div>
       </div>
     </BaseLayout>

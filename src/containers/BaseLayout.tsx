@@ -3,12 +3,13 @@ import {
   GAL_DONATE_PAGE_2019,
   LLS_URL,
 } from '@/utils/constants';
+import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 
 const BaseLayout: React.FC<any> = ({
   title = '🕺 Grooving Against Leukemia 🕺',
-  description = 'Party After the NYC Marathon from 3-7 at Crompton Ale House',
+  description = 'Donate to LLS | 🍺 After the NYC Marathon from 3-7 at Crompton Ale House',
   children,
 }) => {
   return (
@@ -20,6 +21,31 @@ const BaseLayout: React.FC<any> = ({
           property="og:url"
           content={`https://gal.vercel.app/gal-logo.png`}
           key="ogurl"
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:url"
+          content={'groovingagainstleukemia.com'}
+          key="ogurl"
+        />
+        <meta
+          property="og:image"
+          content={`https://gal.vercel.app/gal-logo.png`}
+          key="ogimage"
+        />
+        <meta property="og:site_name" content="GAL 2021" key="ogsitename" />
+        <meta property="og:title" content={title} key="ogtitle" />
+        <meta property="og:description" content={description} key="ogdesc" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content={'summary'} />
+        <meta name="twitter:site" content="@thejackobrien" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta
+          name="twitter:image"
+          content={`https://gal.vercel.app/gal-logo.png`}
         />
 
         <link rel="icon" href="/favicon.ico" />
@@ -56,8 +82,11 @@ const BaseLayout: React.FC<any> = ({
       <main className="dosis-font text-white">{children}</main>
 
       <footer className="dosis-font text-white">
-        <div className="w-full flex flex-col justify-center items-center gap-2 mt-16 mb-4 pb-2">
-          <h3 className="text-sm font-semibold mb-1">GAL 2021</h3>
+        <div className="w-full flex flex-col justify-center items-center gap-2 mt-12 mb-4 pb-2">
+          <div className="">
+            <Image src="/gal-logo.png" width="70" height="70" priority />
+          </div>
+
           <div className="flex gap-2">
             <p className="text-xs">
               <Link href={LLS_URL}>
@@ -77,11 +106,6 @@ const BaseLayout: React.FC<any> = ({
               </Link>
             </p>
           </div>
-          {/* <p className="text-white text-xs">
-            <Link href="/listening">
-              <a>Now Playing</a>
-            </Link>
-          </p> */}
         </div>
       </footer>
     </div>

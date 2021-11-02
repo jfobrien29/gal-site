@@ -1,7 +1,6 @@
 import BaseLayout from '@/containers/BaseLayout';
 import {
   AJ_DONATE_PAGE,
-  CROMPTON_DIRECTOPNS,
   GAL_DONATE_PAGE,
   JACK_DONATE_PAGE,
   LLS_URL,
@@ -11,11 +10,17 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 
-const GroovinLogo = () => {
+const GroovinLogo = ({ dimension = '100' }) => {
   return (
     <div className="">
-      <Image src="/gal-logo.png" width="100" height="100" priority />
+      <Image
+        src="/gal-logo.png"
+        width={dimension}
+        height={dimension}
+        priority
+      />
     </div>
   );
 };
@@ -27,29 +32,42 @@ interface PersonData {
   tshirt: string;
   shorts: string;
   hat: string;
-  playlist: string;
 }
 
-const Card: React.FC<{ title: string; data?: PersonData }> = ({
-  title,
-  data,
-}) => {
+const PERSON_DATA = [
+  {
+    name: 'AJ Kuhn',
+    startingTime: '9:55 AM',
+    bib: '10333',
+    tshirt: 'TBD',
+    shorts: 'TBD',
+    hat: 'TBD',
+  },
+  {
+    name: "Jack O'Brien",
+    startingTime: '10:40 AM',
+    bib: '21058',
+    tshirt: 'TBD',
+    shorts: 'TBD',
+    hat: 'TBD',
+  },
+];
+
+const Card: React.FC<{ data: PersonData }> = ({ data }) => {
   return (
-    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:bg-white hover:shadow-lg transform duration-500 ease-in-out hover:-translate-y-1 hover:text-purple-600 boxShadow-offset-green">
-      <h2 className="font-semibold text-lg ">{title}</h2>
+    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
+      <h2 className="font-semibold text-lg ">{data.name}</h2>
       <div className="grid grid-cols-2 text-sm">
         <p className="">Starting Time</p>
-        <p>9:45</p>
+        <p>{data.startingTime}</p>
         <p className="text-sm">Bib Number</p>
-        <p>100032</p>
+        <p>{data.bib}</p>
         <p className="text-sm">T Shirt Color</p>
-        <p>TBD</p>
+        <p>{data.tshirt}</p>
         <p className="text-sm">Shorts Color</p>
-        <p>TBD</p>
+        <p>{data.shorts}</p>
         <p className="text-sm">Hat Color</p>
-        <p>TBD</p>
-        <p className="text-sm">Playlist</p>
-        <p>dasd</p>
+        <p>{data.hat}</p>
       </div>
     </div>
   );
@@ -67,7 +85,7 @@ export default function Landing() {
                 <a> Grooving Against Leukemia!</a>
               </Link>
             </h1>
-            <div className="flex gap-2 text-lg flex-col md:flex-row items-center font-semibold">
+            <div className="flex gap-1 md:gap-2 text-lg flex-col md:flex-row items-center font-semibold">
               <h2 className="">
                 <Link href={LLS_URL}>
                   <a target="_blank">Leukemia & Lymphoma Society</a>
@@ -126,7 +144,7 @@ export default function Landing() {
         {/** Details on Party */}
         <div className="w-full flex justify-center gap-4 mt-10 text-lg">
           <div className="group w-3/4 md:w-96 p-3 border-green-500 border-2 rounded-sm">
-            <h2 className="text-xl font-semibold">Post Race</h2>
+            <h2 className="text-xl font-semibold">Post Race 🍺🏅</h2>
             <p className="text-md mt-1">
               Party with us after the run from 3-7 at the Crompton Ale House on
               26th street between 6th and 7th avenue.
@@ -135,26 +153,16 @@ export default function Landing() {
               <iframe
                 className="border-0 w-11/12 h-52"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.7369554553047!2d-73.99549058540212!3d40.74581324348466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a569a16963%3A0xf663cbfcb3905f12!2sCrompton%20Ale%20House!5e0!3m2!1sen!2sus!4v1635741398443!5m2!1sen!2sus"
-                // width="600"
-                // height="450"
                 allowFullScreen={false}
                 loading="lazy"
               ></iframe>
-              {/* <Link href={CROMPTON_DIRECTOPNS} passHref>
-                <a
-                  className="font-bold px-5 py-3 bg-gradient-to-r from-green-500 to-green-400 rounded-full hover:shadow-2xl w-24 text-center"
-                  target="_blank"
-                >
-                  Directions to Crompton Ale House
-                </a>
-              </Link> */}
             </div>
           </div>
         </div>
 
         {/** How to track */}
         <div className="w-full flex flex-col items-center gap-2 mt-10 text-lg">
-          <div>Track us during the race on the NYC marathon app</div>
+          <div>Track us during the run on the NYC marathon app</div>
           <div className="flex gap-4">
             <Link href={MARATHON_IPHONE_APP_URL} passHref>
               <a target="_blank">
@@ -166,8 +174,18 @@ export default function Landing() {
 
         {/** Cards */}
         <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 mt-2 md:mt-3">
-          <Card title="AJ Kuhn" />
-          <Card title="Jack O'Brien" />
+          {PERSON_DATA.map((person: PersonData, index: number) => {
+            return <Card key={`person-${index}`} data={person} />;
+          })}
+        </div>
+
+        <div className="w-full flex flex-row justify-center mt-10">
+          <ReactAudioPlayer
+            src="bee_gees_stayin_alive.mp3"
+            autoPlay
+            controls
+            loop
+          />
         </div>
       </div>
     </BaseLayout>

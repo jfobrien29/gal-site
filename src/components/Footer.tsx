@@ -1,9 +1,7 @@
-const Footer = () => {
-  return (
-    <footer>
-      <p>Groovin!</p>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer>
+    <p>Groovin!</p>
+  </footer>
+);
 
 export default Footer;

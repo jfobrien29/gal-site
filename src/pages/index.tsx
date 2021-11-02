@@ -15,7 +15,7 @@ import ReactAudioPlayer from 'react-audio-player';
 const TEAM = `AJ Kuhn and Jack O'Brien`;
 
 const GroovinLogo = ({ dimension = `100` }) => (
-  <div>
+  <div className="hidden md:block">
     <Image src="/gal-logo.png" width={dimension} height={dimension} priority />
   </div>
 );

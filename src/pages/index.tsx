@@ -12,18 +12,11 @@ import Image from 'next/image';
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
-const GroovinLogo = ({ dimension = '100' }) => {
-  return (
-    <div className="">
-      <Image
-        src="/gal-logo.png"
-        width={dimension}
-        height={dimension}
-        priority
-      />
-    </div>
-  );
-};
+const GroovinLogo = ({ dimension = `100` }) => (
+  <div>
+    <Image src="/gal-logo.png" width={dimension} height={dimension} priority />
+  </div>
+);
 
 interface PersonData {
   name: string;
@@ -36,42 +29,40 @@ interface PersonData {
 
 const PERSON_DATA = [
   {
-    name: 'AJ Kuhn',
-    startingTime: '9:55 AM',
-    bib: '10333',
-    tshirt: 'TBD',
-    shorts: 'TBD',
-    hat: 'TBD',
+    name: `AJ Kuhn`,
+    startingTime: `9:55 AM`,
+    bib: `10333`,
+    tshirt: `TBD`,
+    shorts: `TBD`,
+    hat: `TBD`,
   },
   {
-    name: "Jack O'Brien",
-    startingTime: '10:40 AM',
-    bib: '21058',
-    tshirt: 'TBD',
-    shorts: 'TBD',
-    hat: 'TBD',
+    name: `Jack O'Brien`,
+    startingTime: `10:40 AM`,
+    bib: `21058`,
+    tshirt: `TBD`,
+    shorts: `TBD`,
+    hat: `TBD`,
   },
 ];
 
-const Card: React.FC<{ data: PersonData }> = ({ data }) => {
-  return (
-    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
-      <h2 className="font-semibold text-lg ">{data.name}</h2>
-      <div className="grid grid-cols-2 text-sm">
-        <p className="">Starting Time</p>
-        <p>{data.startingTime}</p>
-        <p className="text-sm">Bib Number</p>
-        <p>{data.bib}</p>
-        <p className="text-sm">T Shirt Color</p>
-        <p>{data.tshirt}</p>
-        <p className="text-sm">Shorts Color</p>
-        <p>{data.shorts}</p>
-        <p className="text-sm">Hat Color</p>
-        <p>{data.hat}</p>
-      </div>
+const Card: React.FC<{ data: PersonData }> = ({ data }) => (
+  <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
+    <h2 className="font-semibold text-lg ">{data.name}</h2>
+    <div className="grid grid-cols-2 text-sm">
+      <p>Starting Time</p>
+      <p>{data.startingTime}</p>
+      <p>Bib Number</p>
+      <p>{data.bib}</p>
+      <p>T Shirt Color</p>
+      <p>{data.tshirt}</p>
+      <p>Shorts Color</p>
+      <p>{data.shorts}</p>
+      <p>Hat Color</p>
+      <p>{data.hat}</p>
     </div>
-  );
-};
+  </div>
+);
 
 export default function Landing() {
   return (
@@ -174,8 +165,8 @@ export default function Landing() {
 
         {/** Cards */}
         <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 mt-2 md:mt-3">
-          {PERSON_DATA.map((person: PersonData, index: number) => {
-            return <Card key={`person-${index}`} data={person} />;
+          {PERSON_DATA.map((person: PersonData) => {
+            return <Card key={`person-${person.name}`} data={person} />;
           })}
         </div>
 

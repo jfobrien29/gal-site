@@ -1,3 +1,7 @@
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import ReactAudioPlayer from 'react-audio-player';
 import BaseLayout from '@/containers/BaseLayout';
 import {
   AJ_DONATE_PAGE,
@@ -7,10 +11,6 @@ import {
   MARATHON_IPHONE_APP_URL,
   MARATHON_URL,
 } from '@/utils/constants';
-import Link from 'next/link';
-import Image from 'next/image';
-import React from 'react';
-import ReactAudioPlayer from 'react-audio-player';
 
 const TEAM = `AJ Kuhn and Jack O'Brien`;
 
@@ -23,6 +23,7 @@ const GroovinLogo = ({ dimension = `100` }) => (
 interface PersonData {
   name: string;
   startingTime: string;
+  corral: string;
   bib: string;
   tshirt: string;
   shorts: string;
@@ -31,42 +32,59 @@ interface PersonData {
 
 const PERSON_DATA = [
   {
-    name: `AJ Kuhn`,
+    name: `AJ`,
     startingTime: `9:55 AM`,
+    corral: 'Blue',
     bib: `10333`,
-    tshirt: `TBD`,
-    shorts: `TBD`,
-    hat: `TBD`,
+    tshirt: `White`,
+    shorts: `Black`,
+    hat: `White`,
   },
   {
-    name: `Jack O'Brien`,
+    name: `Jack`,
     startingTime: `10:40 AM`,
+    corral: 'Green',
     bib: `21058`,
-    tshirt: `TBD`,
-    shorts: `TBD`,
-    hat: `TBD`,
+    tshirt: `White`,
+    shorts: `Orange`,
+    hat: `White`,
   },
 ];
 
-const Card: React.FC<{ data: PersonData }> = ({ data }) => (
-  <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
-    <h2 className="font-semibold text-lg ">{data.name}</h2>
-    <div className="grid grid-cols-2 text-sm">
-      <p>Starting Time</p>
-      <p>{data.startingTime}</p>
-      <p>Bib Number</p>
-      <p>{data.bib}</p>
-      <p>T Shirt Color</p>
-      <p>{data.tshirt}</p>
-      <p>Shorts Color</p>
-      <p>{data.shorts}</p>
-      <p>Hat Color</p>
-      <p>{data.hat}</p>
+const Card: React.FC<{ data: PersonData }> = ({ data }) => {
+  return (
+    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
+      <h2 className="font-semibold text-lg ">{data.name}</h2>
+      <div className="grid grid-cols-2 text-sm">
+        <p>Starting Time</p>
+        <p>{data.startingTime}</p>
+        <p>Corral</p>
+        <p>{data.corral}</p>
+        <p>Bib Number</p>
+        <p>{data.bib}</p>
+        <p>Hat Color</p>
+        <p>{data.hat}</p>
+        <p>T Shirt Color</p>
+        <p>{data.tshirt}</p>
+        <p>Shorts Color</p>
+        <p>{data.shorts}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Landing() {
+  const [loaded, setLoaded] = useState(false);
+  const [today, setToday] = useState('');
+
+  useEffect(() => {
+    console.log('GAL! GAL! GAL!');
+    setLoaded(true);
+    const now = new Date();
+    setToday(`${now.getDate()}/${now.getMonth() + 1}`);
+    console.log(`${now.getDate()}/${now.getMonth() + 1}`);
+  }, []);
+
   return (
     <BaseLayout>
       <div className="w-full flex flex-row justify-center mt-1">
@@ -75,6 +93,7 @@ export default function Landing() {
           autoPlay
           controls
           loop
+          volume={1}
         />
       </div>
       <div className="w-full min-h-screen bg-gradient-to-b from-purple-600 to-purple-600">
@@ -95,7 +114,10 @@ export default function Landing() {
               <h2 className="hidden md:inline">|</h2>
               <h2 className="">
                 <Link href={MARATHON_URL}>
-                  <a target="_blank">NYC Marathon 2021</a>
+                  <a target="_blank">
+                    NYC Marathon 2021{' '}
+                    {today === '7/11' || today === '6/11' ? '(TODAY!)' : ''}
+                  </a>
                 </Link>
               </h2>
             </div>
@@ -148,7 +170,7 @@ export default function Landing() {
             <h2 className="text-xl font-semibold">Post Race 🍺🏅</h2>
             <p className="text-md mt-1">
               Party with us after the run from 3-7 at the Crompton Ale House on
-              26th street between 6th and 7th avenue.
+              26th street between 6th and 7th avenue!
             </p>
             <div className="mt-2 flex justify-center">
               <iframe

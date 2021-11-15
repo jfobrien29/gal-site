@@ -34,7 +34,7 @@ const PERSON_DATA = [
   {
     name: `AJ`,
     startingTime: `9:55 AM`,
-    corral: 'Blue',
+    corral: `Blue`,
     bib: `10333`,
     tshirt: `White`,
     shorts: `Black`,
@@ -43,7 +43,7 @@ const PERSON_DATA = [
   {
     name: `Jack`,
     startingTime: `10:40 AM`,
-    corral: 'Green',
+    corral: `Green`,
     bib: `21058`,
     tshirt: `White`,
     shorts: `Orange`,
@@ -51,38 +51,32 @@ const PERSON_DATA = [
   },
 ];
 
-const Card: React.FC<{ data: PersonData }> = ({ data }) => {
-  return (
-    <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
-      <h2 className="font-semibold text-lg ">{data.name}</h2>
-      <div className="grid grid-cols-2 text-sm">
-        <p>Starting Time</p>
-        <p>{data.startingTime}</p>
-        <p>Corral</p>
-        <p>{data.corral}</p>
-        <p>Bib Number</p>
-        <p>{data.bib}</p>
-        <p>Hat Color</p>
-        <p>{data.hat}</p>
-        <p>T Shirt Color</p>
-        <p>{data.tshirt}</p>
-        <p>Shorts Color</p>
-        <p>{data.shorts}</p>
-      </div>
+const Card: React.FC<{ data: PersonData }> = ({ data }) => (
+  <div className="group w-3/4 md:w-56 p-3 border-green-500 border-2 rounded-sm hover:shadow-lg transform duration-500 ease-in-out boxShadow-offset-green">
+    <h2 className="font-semibold text-lg ">{data.name}</h2>
+    <div className="grid grid-cols-2 text-sm">
+      <p>Starting Time</p>
+      <p>{data.startingTime}</p>
+      <p>Corral</p>
+      <p>{data.corral}</p>
+      <p>Bib Number</p>
+      <p>{data.bib}</p>
+      <p>Hat Color</p>
+      <p>{data.hat}</p>
+      <p>T Shirt Color</p>
+      <p>{data.tshirt}</p>
+      <p>Shorts Color</p>
+      <p>{data.shorts}</p>
     </div>
-  );
-};
+  </div>
+);
 
 export default function Landing() {
-  const [loaded, setLoaded] = useState(false);
-  const [today, setToday] = useState('');
+  const [today, setToday] = useState(``);
 
   useEffect(() => {
-    console.log('GAL! GAL! GAL!');
-    setLoaded(true);
     const now = new Date();
     setToday(`${now.getDate()}/${now.getMonth() + 1}`);
-    console.log(`${now.getDate()}/${now.getMonth() + 1}`);
   }, []);
 
   return (
@@ -115,8 +109,8 @@ export default function Landing() {
               <h2 className="">
                 <Link href={MARATHON_URL}>
                   <a target="_blank">
-                    NYC Marathon 2021{' '}
-                    {today === '7/11' || today === '6/11' ? '(TODAY!)' : ''}
+                    NYC Marathon 2021{` `}
+                    {today === `7/11` || today === `6/11` ? `(TODAY!)` : ``}
                   </a>
                 </Link>
               </h2>
